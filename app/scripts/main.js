@@ -114,7 +114,7 @@ window.onload=function () {
         apop.open();
     }
     // 关闭按钮
-    var colseBtn=document.getElementById('closeBtn')
+    var colseBtn=document.getElementById('closeBtn');
     colseBtn.onclick=function () {
         apop.close();
     }
@@ -123,6 +123,33 @@ window.onload=function () {
 
     var _$$=new ToolFuc();
     console.log(_$$)
+    // 实例对象可以通过constructor来验证构造函数
+    console.log(_$$.constructor)
+    // 实例对象也可以通过instanceof运算符来验证和构造函数之间的关系
+    console.log(_$$ instanceof ToolFuc)
+
+
+    function Parent() {
+        this.name='Alen';
+        this.sex='male'
+    }
+    Parent.prototype.say=function () {
+        console.log(this.name)
+    }
+
+    function Child() {
+
+    }
+    // Child继承Parent,即让Child的原型等于Parent的一个实例，千万记得要在constructor上修正一下构造函数
+    Child.prototype=new Parent();
+    Child.prototype.constructor=Child;
+    var child1=new Child();
+    console.log(child1.name)
+    console.log(child1.sex)
+    console.log(child1.say)
+
+
+
 
 
 }
